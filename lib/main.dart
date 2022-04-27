@@ -1,6 +1,8 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
+import 'package:instagram_kt/responsive/mobile_screen_layout.dart';
+import 'package:instagram_kt/responsive/responsive_layout_screen.dart';
+import 'package:instagram_kt/responsive/web_screen_layout.dart';
+import 'package:instagram_kt/utils/colors.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,8 +16,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Instagram clone',
-      theme: ThemeData.dark(),
-      home: Text('Flutter Demo Home Page'),
-    );
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData.dark()
+          .copyWith(scaffoldBackgroundColor: mobileBackgroundColor),
+      home: const ResponsiveLayout(
+              webScreenLayout: WebScreenLayout(),
+              mobileScreenLayout: MobileScreenLayout()),
+      );
   }
 }
